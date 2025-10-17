@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon dist/server.js",
-    "build": "tsc"
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "express": "^5.1.0",
     "mongodb": "^6.20.0",
     "mongoose": "^8.19.1",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.3"
   }
 }
