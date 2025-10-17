@@ -3,14 +3,9 @@ import router from "./routes/tasks.js";
 import mongoose from "mongoose";
 import cors from "cors";
 
-const user: string = "admin";
-const password: string = "123456";
-
-const mongoPort = process.env.MONGODB_PORT || 27017;
-const url: string = `mongodb://${user}:${password}@mongodb:${mongoPort}/`;
-const db: string = "todo-app";
-const connectionString =
-  url + db + "?authSource=admin&retryWrites=true&w=majority";
+const url: string =
+  "mongodb://admin:123456@mongodb:27017/todo-app?authSource=admin&retryWrites=true&w=majority";
+const connectionString = process.env.MONGO_URL || url;
 
 const app = express();
 
