@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/tasks";
+// const API_URL = "http://localhost:5000/tasks"
+const API_URL = window.API_BASE_URL;
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchTasks();
