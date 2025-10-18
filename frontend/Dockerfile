@@ -1,13 +1,10 @@
-FROM node:alpine
+FROM nginx:alpine
 
-WORKDIR /app
+COPY . /usr/share/nginx/html/
 
-COPY package*.json ./
+COPY entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
-RUN npm install 
+EXPOSE 80
 
-COPY . .
-
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+CMD ["/docker-entrypoint.sh"]
