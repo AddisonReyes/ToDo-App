@@ -1,5 +1,5 @@
 // const API_URL = "http://localhost:5000/tasks"
-const API_URL = window.API_BASE_URL;
+const API_URL = "https://backend-production-a579.up.railway.app/tasks";
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchTasks();
