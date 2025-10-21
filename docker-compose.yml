@@ -22,8 +22,9 @@ services:
     volumes:
       - ./backend:/app
     environment:
+      MONGO_URL_PROD: mongodb://admin:123456@mongodb:27017/todo-app?authSource=admin&retryWrites=true&w=majority
       BACKEND_PORT: 5000
-      MONGO_URL: mongodb://admin:123456@mongodb:27017/todo-app?authSource=admin&retryWrites=true&w=majority
+      NODE_ENV: prod
     command: npm run start
 
   frontend:

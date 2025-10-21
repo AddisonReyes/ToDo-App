@@ -1,13 +1,17 @@
 import express, { NextFunction, Request, Response } from "express";
 import router from "./routes/tasks.js";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
 
-const url: string =
-  "mongodb://admin:123456@mongodb:27017/todo-app?authSource=admin&retryWrites=true&w=majority";
-const connectionString = process.env.MONGO_URL || url;
+dotenv.config();
 
+const env = process.env.NODE_ENV || "dev";
+const connectionString =
+  env === "prod" ? process.env.MONGO_URL_PROD : process.env.MONGO_URL_DEV;
 const app = express();
+
+console.log(env, connectionString);
 
 // Settings
 app.use(express.urlencoded({ extended: true }));
@@ -16,7 +20,9 @@ app.use(express.json());
 app.use(cors());
 
 // Database
-mongoose.connect(connectionString);
+if (connectionString) {
+  mongoose.connect(connectionString);
+}
 
 // Routes
 app.use("/tasks", router);
